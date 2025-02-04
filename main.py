@@ -1,15 +1,12 @@
-from flask import Flask, jsonify
+from flask import Flask, render_template
 import os
 
 app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def home():
-    response = {
-        "message": "Hello, Render! Your API is working.",
-        "status": "success"
-    }
-    return jsonify(response), 200
+    # رندر کردن فایل index.html از دایرکتوری templates
+    return render_template("index.html")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # سازگار با پلتفرم‌های استقرار مانند Render
